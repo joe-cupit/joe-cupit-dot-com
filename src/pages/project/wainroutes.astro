@@ -1,11 +1,13 @@
 ---
 import Project from "../../layouts/Project.astro";
-import WainroutesImage from "../../images/wainroutes-1.png";
+import WainroutesImage1 from "../../images/wainroutes-1.png";
+import WainroutesImage2 from "../../images/wainroutes-4.png";
+import WainroutesImage3 from "../../images/wainroutes-3.png";
 ---
 
 <Project
   title="Wainroutes"
-  image={WainroutesImage}
+  images={[WainroutesImage1, WainroutesImage2, WainroutesImage3]}
   tldr="A React-based web app for planning and exploring the Wainwrights in the Lake District. Featuring routes, weather forecasts, travel information, and an interactive GPX route editor."
   url="https://wainroutes.co.uk"
   technologies={["Next.js", "TypeScript", "Python", "Cloudflare"]}

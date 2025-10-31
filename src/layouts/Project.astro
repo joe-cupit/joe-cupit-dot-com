@@ -4,66 +4,98 @@ import "../styles/project.css";
 import { Image } from "astro:assets";
 import Layout from "./Layout.astro";
 
-const { title, image, tldr, url, technologies, roles, challenges, solutions } = Astro.props;
+import ArrowIcon from "../icons/ArrowIcon.astro";
+
+const { title, images, tldr, url, technologies, roles, challenges, solutions } = Astro.props;
 ---
 
-<Layout>
-  <div class="title-bar">
-    <span>
-      : <h1>Project ~ {title}</h1>
-    </span>
-  </div>
-
+<Layout
+  title={`project : ${title}`}
+  maxWidth="80ch"
+>
   <div class="project">
-    <div class="project-image">
-      {image &&
-        <Image class="project-image" src={image} alt={"Screenshot of " + title + " homepage"} loading="lazy" />
-      }
-    </div>
-
-    <div class="project-section">
+    <div class="project-header">
       <div>
-        <h2>TLDR;</h2>
-        <hr />
+        <span>web project:</span>
+        <h1 style="font-size: var(--fs-big); font-weight: 800;">{title}</h1>
       </div>
-      <p>{tldr}</p>
-      <a class="project-button" href={url} target="_blank">Visit site</a>
+      <a class="project-button" href={url} target="_blank">Visit site <ArrowIcon /></a>
     </div>
 
-    <div class="project-row">
+    {images[0] &&
+      <div class="project-image">
+        <Image src={images[0]} alt={"Screenshot of " + title + " homepage"} loading="lazy" />
+      </div>
+    }
+
+    {tldr &&
       <div class="project-section">
         <div>
-          <h2>Technologies</h2>
+          <h2>Summary</h2>
           <hr />
         </div>
-        <ul>{technologies?.map((t: string) => <li>{t}</li>)}</ul>
+        <p>{tldr}</p>
       </div>
+    }
+
+    {technologies &&
+      <div class="project-section horizontal">
+        <h2>Technologies</h2>
+        <ul>{technologies.map((t: string) => <li>{t}</li>)}</ul>
+      </div>
+    }
+
+    {(images[1] && images[2]) &&
+      <div class="project-image-section">
+        <Image src={images[1]} alt={"Screenshot of " + title + " homepage"} loading="lazy" />
+        <Image src={images[2]} alt={"Screenshot of " + title + " homepage"} loading="lazy" />
+      </div>
+    }
+
+    {challenges &&
       <div class="project-section">
         <div>
-          <h2>Roles</h2>
+          <h2>Challenges</h2>
           <hr />
         </div>
-        <ul>{roles?.map((t: string) => <li>{t}</li>)}</ul>
+        <p>{challenges}</p>
       </div>
-    </div>
+    }
 
-    <div class="project-section">
-      <div>
-        <h2>Challenges</h2>
-        <hr />
+    {solutions &&
+      <div class="project-section">
+        <div>
+          <h2>Solutions</h2>
+          <hr />
+        </div>
+        <p>{solutions}</p>
       </div>
-      <p>{challenges}</p>
-    </div>
+    }
 
-    <div class="project-section">
-      <div>
-        <h2>Solutions</h2>
-        <hr />
+    {(technologies || roles) &&
+      <div class="project-row">
+        {technologies &&
+          <div class="project-section">
+            <div>
+              <h2>Technologies</h2>
+              <hr />
+            </div>
+            <ul>{technologies.map((t: string) => <li>{t}</li>)}</ul>
+          </div>
+        }
+        {roles &&
+          <div class="project-section roles">
+            <div>
+              <h2>Roles</h2>
+              <hr />
+            </div>
+            <ul>{roles.map((t: string) => <li>{t}</li>)}</ul>
+          </div>
+        }
       </div>
-      <p>{solutions}</p>
-    </div>
+    }
 
-    <a class="button-link" href="/web">Back to projects</a>
+    <a class="button-link" href="/web">back to projects</a>
   </div>
 
 </Layout>

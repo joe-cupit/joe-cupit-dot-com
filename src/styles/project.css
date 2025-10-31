@@ -1,9 +1,8 @@
 .project {
-  display: grid;
-  gap: 1.5lh;
+  --_gap: 1.5lh;
 
-  max-width: min(74ch, 90%);
-  margin-inline: auto;
+  display: grid;
+  gap: var(--_gap);
 
   & h2 {
     font-size: var(--fs-medium);
@@ -11,16 +10,33 @@
   }
 }
 
-.project-image {
-  max-width: 100%;
+.project-header {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 4ch;
+  row-gap: 0.5lh;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.project img {
+  border: 3px solid var(--clr-primary-dark);
+
+  width: 100%;
   height: fit-content;
-  object-fit: scale-down;
+}
+
+.project-image-section {
+  display: grid;
+  gap: 1ch;
+  grid-template-columns: 2fr 0.65fr;
 }
 
 .project-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2lh;
+  column-gap: 2lh;
+  row-gap: var(--_gap);
 
   @media (max-width: 35rem) {
     grid-template-columns: 1fr;
@@ -41,13 +57,34 @@
   }
   & ul {
     list-style: inside;
-    margin-inline-start: 1ch;
+    margin-inline-start: 0.5ch;
   }
+}
+.project-section.horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2ch;
+  align-items: baseline;
+
+  & ul {
+    list-style: none;
+    display: contents;
+  }
+}
+.project-section.roles ul {
+  list-style: none;
+  margin: 0;
 }
 
 .project-button {
+  display: flex;
+  gap: 1ch;
+  align-items: center;
+
   color: var(--clr-bg);
   background: var(--clr-text);
+  text-transform: lowercase;
+  text-wrap: nowrap;
 
   border: 4px solid var(--clr-text);
   width: fit-content;
@@ -56,8 +93,32 @@
   padding-inline: 1.5ch;
   padding-block: 0.125lh;
 
+  transition-property: color background-color;
+  transition-duration: 200ms;
+
+  & svg {
+    width: 2.5ch;
+    height: 2.5ch;
+    transition: rotate 200ms;
+  }
+
   &:hover {
     color: var(--clr-text);
     background: none;
+    text-decoration: underline;
+
+    & svg {
+      rotate: -45deg;
+    }
+  }
+}
+
+@media (max-width: 27.5rem) {
+  .project-button {
+    padding-inline: 0.75ch;
+
+    & span {
+      display: none;
+    }
   }
 }

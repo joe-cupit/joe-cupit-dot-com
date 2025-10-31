@@ -4,12 +4,12 @@ import { Image } from "astro:assets";
 const { title, slug, image, tall } = Astro.props;
 ---
 
-<a class={`project-link ${tall ? "tall" : ""}`} href=`/project/${slug}`>
+<a class={`project-link ${tall ? "tall" : ""}`} href={slug ? `/project/${slug}` : "#"}>
   {image &&
     <Image class="project-image" src={image} alt={"Screenshot of " + title + " homepage"} loading="lazy" />
   }
   <div class="project-details">
     <h2 class="project-title">{title}</h2>
-    <div class="project-button">More info</div>
+    {slug && <div class="project-button">More info <span>&gt;</span></div>}
   </div>
 </a>

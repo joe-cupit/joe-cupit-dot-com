@@ -1,7 +1,7 @@
 :root {
   --clr-white: #fbfbfc;
   --clr-primary: #34558a;
-  --clr-primary-dark: #060a11;
+  --clr-primary-dark: #121a27;
 
   --clr-text: var(--clr-primary-dark);
   --clr-bg: var(--clr-white);
@@ -53,6 +53,7 @@ body {
 }
 
 .page {
+  --_max-width: 60rem;
   --_inline-padding: 1.5rem;
 
   display: grid;
@@ -62,10 +63,10 @@ body {
   margin-inline: auto;
   margin-block: auto;
 
-  padding-block: 3rem 6rem;
+  padding-block: 3rem 8rem;
   padding-inline: var(--_inline-padding);
 
-  width: min(60rem + 2 * var(--_inline-padding), 100%);
+  width: min(var(--_max-width) + 2 * var(--_inline-padding), 100%);
 }
 
 main {
@@ -96,7 +97,7 @@ h4,
 h5,
 h6 {
   font: inherit;
-  line-height: 1;
+  line-height: 1.1;
 }
 
 a {
