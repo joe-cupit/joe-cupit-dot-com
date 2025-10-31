@@ -1,0 +1,15 @@
+---
+import Project from "../../layouts/Project.astro";
+import WainroutesImage from "../../images/wainroutes-1.png";
+---
+
+<Project
+  title="Wainroutes"
+  image={WainroutesImage}
+  tldr="A React-based web app for planning and exploring the Wainwrights in the Lake District. Featuring routes, weather forecasts, travel information, and an interactive GPX route editor."
+  url="https://wainroutes.co.uk"
+  technologies={["Next.js", "TypeScript", "Python", "Cloudflare"]}
+  roles={["Designer & Developer", "Content", "(all of it basically)"]}
+  challenges="There were a few, it took quite a while to design and write up details."
+  solutions="Cloudflare CDN, with daily weather updates through scraping the Met Office site with additional use of the API to get summit specific weather."
+/>

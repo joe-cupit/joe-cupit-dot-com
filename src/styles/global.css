@@ -7,8 +7,18 @@
   --clr-bg: var(--clr-white);
 
   --fs-body: 1rem;
-  --fs-medium: 1.625rem;
-  --fs-big: 3rem;
+  --fs-medium: 1.5rem;
+  --fs-big: 2rem;
+  --fs-title: 3.5rem;
+}
+
+@media (max-width: 35rem) {
+  :root {
+    --fs-body: 0.875rem;
+    --fs-medium: 1.25rem;
+    --fs-big: 1.75rem;
+    --fs-title: 2.5rem;
+  }
 }
 
 * {
@@ -55,7 +65,7 @@ body {
   padding-block: 3rem 6rem;
   padding-inline: var(--_inline-padding);
 
-  width: min(78ch + 2 * var(--_inline-padding), 100%);
+  width: min(60rem + 2 * var(--_inline-padding), 100%);
 }
 
 main {
@@ -67,6 +77,16 @@ main {
 p {
   max-width: 74ch;
   text-wrap: pretty;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: cover;
+}
+body.dark img {
+  opacity: 0.9;
 }
 
 h1,
@@ -95,8 +115,11 @@ button {
 
 hr {
   border: none;
-  border-block-start: 4px solid currentColor;
+  border-block-start: 3px solid var(--clr-primary-dark);
   margin-block: 0.75lh 0;
+}
+body.dark hr {
+  border-color: var(--clr-white);
 }
 
 ::selection {

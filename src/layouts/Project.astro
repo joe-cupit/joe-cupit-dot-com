@@ -1,0 +1,69 @@
+---
+import "../styles/project.css";
+
+import { Image } from "astro:assets";
+import Layout from "./Layout.astro";
+
+const { title, image, tldr, url, technologies, roles, challenges, solutions } = Astro.props;
+---
+
+<Layout>
+  <div class="title-bar">
+    <span>
+      : <h1>Project ~ {title}</h1>
+    </span>
+  </div>
+
+  <div class="project">
+    <div class="project-image">
+      {image &&
+        <Image class="project-image" src={image} alt={"Screenshot of " + title + " homepage"} loading="lazy" />
+      }
+    </div>
+
+    <div class="project-section">
+      <div>
+        <h2>TLDR;</h2>
+        <hr />
+      </div>
+      <p>{tldr}</p>
+      <a class="project-button" href={url} target="_blank">Visit site</a>
+    </div>
+
+    <div class="project-row">
+      <div class="project-section">
+        <div>
+          <h2>Technologies</h2>
+          <hr />
+        </div>
+        <ul>{technologies?.map((t: string) => <li>{t}</li>)}</ul>
+      </div>
+      <div class="project-section">
+        <div>
+          <h2>Roles</h2>
+          <hr />
+        </div>
+        <ul>{roles?.map((t: string) => <li>{t}</li>)}</ul>
+      </div>
+    </div>
+
+    <div class="project-section">
+      <div>
+        <h2>Challenges</h2>
+        <hr />
+      </div>
+      <p>{challenges}</p>
+    </div>
+
+    <div class="project-section">
+      <div>
+        <h2>Solutions</h2>
+        <hr />
+      </div>
+      <p>{solutions}</p>
+    </div>
+
+    <a class="button-link" href="/web">Back to projects</a>
+  </div>
+
+</Layout>
