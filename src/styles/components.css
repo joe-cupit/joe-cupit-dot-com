@@ -1,4 +1,12 @@
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: calc(infinity);
+
+  @media (max-width: 70rem) {
+    background: var(--clr-bg);
+  }
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -94,6 +102,9 @@ body.dark {
   background: var(--clr-primary);
   font-weight: 700;
   width: fit-content;
+
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 
   /* display: inline-block; */
 
@@ -205,7 +216,7 @@ body.dark {
     gap: 1ch;
     justify-content: space-between;
 
-    color: var(--clr-white);
+    color: var(--clr-bg);
     background: var(--clr-text);
     width: fit-content;
     font-weight: 600;
@@ -254,7 +265,7 @@ body.dark {
 .project-link:hover {
   --_transition-duration: 600ms;
 
-  color: var(--clr-white);
+  color: var(--clr-bg);
   /* background: var(--clr-text); */
 
   &::before,
@@ -264,7 +275,7 @@ body.dark {
 
   & .project-button {
     color: var(--clr-text);
-    background: var(--clr-white);
+    background: var(--clr-bg);
 
     width: 15ch;
     padding-inline-end: 1ch;

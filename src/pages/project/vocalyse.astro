@@ -4,12 +4,23 @@ import VocalyseImage from "../../assets/images/vocalyse-1.png";
 ---
 
 <Project
+  caption="Client project"
   title="Vocalyse Ltd"
-  images={[VocalyseImage]}
-  tldr="A React-based website for the consultancy business Vocalyse."
-  url="https://www.vocalyse.co.uk/"
+  url="https://www.vocalyse.co.uk"
+  coverImage={VocalyseImage}
+  sections={[
+    {image: VocalyseImage},
+    {title: "TLDR", content: ["A modern company website for the software consultancy business Vocalyse."]},
+    {title: "Goals", content: ["Before starting this project, the Vocalyse website was sparse, old-fashioned, and in need of an upgraded look. The aim was to build a site that would both allow potential customers to see existing software and more easily contact for any enquiries."]},
+    {image: VocalyseImage},
+    {
+      title: "Technical stuff",
+      content: [
+        "Built with React, this site is smooth and responsive.",
+        "I also built a React app dashboard and applications for them."
+      ]}
+  ]}
+
   technologies={["React", "Docker"]}
   roles={["Designer & Developer"]}
-  challenges="There were a few, it took quite a while to design and write up details."
-  solutions="Cloudflare CDN, with daily weather updates through scraping the Met Office site with additional use of the API to get summit specific weather."
 />

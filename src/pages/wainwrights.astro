@@ -7,9 +7,18 @@ const WainwrightCount = 92
 ---
 
 <Layout title="wainwrights">
-	<h1>Wainwrights</h1>
+	<div class="title-bar">
+    <h1>Wainwrights</h1>
+  </div>
 
-  <div class="progress" style=`--_rotation: ${((WainwrightCount / 214) * 360).toFixed(0)}deg;`>
-    <div class="inner-progress">{WainwrightCount}<span>/214</span></div>
+  <div class="about-group">
+    <div class="about-text">
+      <p>In the 1950s and 60s, Alfred Wainwright wrote his <a class="block-link" href="https://en.wikipedia.org/wiki/Pictorial_Guide_to_the_Lakeland_Fells" target="_blank"><i>Pictorial Guide to the Lakeland Fells</i></a> where he described routes up 214 mountains in the Lake District.</p>
+			<p>At the end of 2023 I set myself the goal of climing all 214 of them.</p>
+    </div>
+
+    <div class="progress" style=`--_rotation: calc(${(WainwrightCount / 214)} * var(--_total-width));`>
+      <div class="inner-progress">{WainwrightCount}<span>/214</span></div>
+    </div>
   </div>
 </Layout>

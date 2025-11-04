@@ -1,5 +1,5 @@
 .project {
-  --_gap: 1.5lh;
+  --_gap: 1.75lh;
 
   display: grid;
   gap: var(--_gap);
@@ -17,10 +17,14 @@
   row-gap: 0.5lh;
   justify-content: space-between;
   align-items: end;
+
+  & span {
+    text-transform: lowercase;
+  }
 }
 
 .project img {
-  border: 3px solid var(--clr-primary-dark);
+  border: 3px solid var(--clr-text);
 
   width: 100%;
   height: fit-content;
@@ -53,8 +57,24 @@
   grid-auto-rows: min-content;
 
   & hr {
+    position: relative;
     margin: 0;
-    margin-block-start: 0.375lh;
+    margin-block-start: 0.25lh;
+    overflow: visible;
+
+    /* &::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 0;
+      display: block;
+
+      height: 0.25lh;
+      width: 100%;
+
+      background: var(--clr-primary);
+      opacity: 0.25;
+    } */
   }
   & .project-button {
     margin-inline: auto;

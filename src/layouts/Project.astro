@@ -2,11 +2,12 @@
 import "../styles/project.css";
 
 import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import Layout from "./Layout.astro";
 
 import ArrowIcon from "../assets/icons/ArrowIcon.astro";
 
-const { title, images, tldr, url, technologies, roles, challenges, solutions } = Astro.props;
+const { caption, title, coverImage, sections, images, tldr, url, technologies, roles, challenges, solutions } = Astro.props;
 ---
 
 <Layout
@@ -16,61 +17,32 @@ const { title, images, tldr, url, technologies, roles, challenges, solutions } =
   <div class="project">
     <div class="project-header">
       <div>
-        <span>web project:</span>
+        <span>{(caption ?? "Web project") + ":"}</span>
         <h1 style="font-size: var(--fs-big); font-weight: 800;">{title}</h1>
       </div>
       <a class="project-button" href={url} target="_blank">Visit site <ArrowIcon /></a>
     </div>
 
-    {images[0] &&
-      <div class="project-image">
-        <Image src={images[0]} alt={"Screenshot of " + title + " homepage"} loading="lazy" />
-      </div>
-    }
+    {sections?.map((section: {title?: string; content?: string[]; image?: ImageMetadata}) => {
 
-    {tldr &&
-      <div class="project-section">
-        <div>
-          <h2>Summary</h2>
-          <hr />
+      if (section.image) {
+        return (
+          <div class="project-image">
+            <Image src={section.image} alt="" loading="lazy" />
+          </div>
+        )
+      }
+
+      return (
+        <div class="project-section">
+          <div>
+            <h2>{section.title}</h2>
+            <hr />
+          </div>
+          {section.content?.map((c: string) => <p>{c}</p>)}
         </div>
-        <p>{tldr}</p>
-      </div>
-    }
-
-    {technologies &&
-      <div class="project-section horizontal">
-        <h2>Technologies</h2>
-        <ul>{technologies.map((t: string) => <li>{t}</li>)}</ul>
-      </div>
-    }
-
-    {(images[1] && images[2]) &&
-      <div class="project-image-section">
-        <Image src={images[1]} alt={"Screenshot of " + title + " homepage"} loading="lazy" />
-        <Image src={images[2]} alt={"Screenshot of " + title + " homepage"} loading="lazy" />
-      </div>
-    }
-
-    {challenges &&
-      <div class="project-section">
-        <div>
-          <h2>Challenges</h2>
-          <hr />
-        </div>
-        <p>{challenges}</p>
-      </div>
-    }
-
-    {solutions &&
-      <div class="project-section">
-        <div>
-          <h2>Solutions</h2>
-          <hr />
-        </div>
-        <p>{solutions}</p>
-      </div>
-    }
+      )
+    })}
 
     {(technologies || roles) &&
       <div class="project-row">
@@ -95,7 +67,10 @@ const { title, images, tldr, url, technologies, roles, challenges, solutions } =
       </div>
     }
 
-    <a class="button-link" href="/web">back to projects</a>
+    <div class="project-section">
+      <a class="button-link" href="/web">next project</a>
+      <a class="button-link" href="/web">back to projects</a>
+    </div>
   </div>
 
 </Layout>

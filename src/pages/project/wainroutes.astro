@@ -6,12 +6,33 @@ import WainroutesImage3 from "../../assets/images/wainroutes-4-small.png";
 ---
 
 <Project
+  caption="Personal project"
   title="Wainroutes"
-  images={[WainroutesImage1, WainroutesImage2, WainroutesImage3]}
-  tldr="A React-based web app for planning and exploring the Wainwrights in the Lake District. Featuring routes, weather forecasts, travel information, and an interactive GPX route editor."
   url="https://wainroutes.co.uk"
-  technologies={["Next.js", "TypeScript", "Python", "Cloudflare"]}
+  sections={[
+    {image: WainroutesImage1},
+    // {
+    //   title: "TLDR",
+    //   content: ["Wainroutes is a personal project built for planning walks in the Lake District, with a focus on the Wainwright fells."]
+    // },
+    {
+      title: "Summary",
+      content: ["Wainroutes is a Next.js web app built for planning walks in the Lake District, with a focus on the Wainwright fells. It combines routes I've walked with practical resources like up-to-date weather forecasts for confident trips to the Lakes."]
+    },
+    {
+      title: "Goals",
+      content: ["Featuring routes, weather forecasts, travel information, and an interactive GPX route editor."]
+    },
+    {image: WainroutesImage2},
+    {
+      title: "Technical stuff",
+      content: [
+        "The site's architecture has taken many forms since its conception in 2024. Nowadays, Wainroutes is a server-rendered Next.js application (written in lovely, lovely TypeScript).",
+        "A lot of the data on the site is dynamic: the 5-day weather forecast is updated twice a day and most walks include their own daily summit forecast. This is done using a combination of web scraping and using the MetOffice API in a Python cron job."
+      ]
+    }
+  ]}
+
+  technologies={["Next.js", "TypeScript", "Python", "Cloudflare CDN"]}
   roles={["Designer & Developer", "Content", "(all of it basically)"]}
-  challenges="There were a few, it took quite a while to design and write up details."
-  solutions="Cloudflare CDN, with daily weather updates through scraping the Met Office site with additional use of the API to get summit specific weather."
 />
