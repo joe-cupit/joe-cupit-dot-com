@@ -25,8 +25,8 @@
     display: flex;
 
     & svg {
-      width: 1.75ch;
-      height: 1.75ch;
+      width: 1.5ch;
+      height: 1.5ch;
     }
   }
 
@@ -55,6 +55,7 @@ body.dark {
   column-gap: 1rem;
   row-gap: 0.5rem;
 
+  /* margin-block-start: 1lh; */
   padding-inline: 1ch;
 
   & .footer-icons {
@@ -74,17 +75,69 @@ body.dark {
   width: 3.5ch;
   height: 3.5ch;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   transition-property: color scale;
-  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+  transition-duration: 150ms;
 
   & svg {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
   }
 }
 .icon-link:hover {
   color: var(--_hover-colour);
-  scale: 1.25;
+  scale: 1.125;
+}
+
+.index-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+
+  & .index-header-icons {
+    display: flex;
+    align-items: center;
+    gap: 1.625ch;
+  }
+  & .icon-link {
+    width: 2.75ch;
+    height: 2.75ch;
+  }
+}
+
+.index-footer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-block-start: 0.5lh;
+
+  & a {
+    border: 4px solid transparent;
+    padding-inline: 1ch;
+    padding-block: 0.75lh;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.125rem;
+
+    color: var(--clr-white);
+    background: var(--clr-primary);
+
+    transition-property: color background-color;
+    transition-duration: 200ms;
+  }
+  & a:hover {
+    color: var(--clr-text);
+    border-color: currentColor;
+    background: none;
+  }
+
+  @media (max-width: 45rem) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .title {
@@ -110,7 +163,7 @@ body.dark {
 
   padding-block: 0.0125lh;
   padding-inline: 0.375ch;
-  margin-inline: -0.25ch;
+  /* margin-inline: -0.25ch; */
 
   transition-property: color background-color border-color;
   transition-duration: 200ms;
@@ -288,4 +341,11 @@ body.dark {
       margin-inline-start: -2ch;
     }
   }
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 4px solid var(--clr-text);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
