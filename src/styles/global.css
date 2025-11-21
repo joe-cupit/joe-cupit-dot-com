@@ -9,7 +9,7 @@
   --fs-body: 1rem;
   --fs-medium: 1.5rem;
   --fs-big: 2rem;
-  --fs-title: 3.5rem;
+  --fs-title: 3.75rem;
 }
 
 @media (max-width: 35rem) {
@@ -43,7 +43,7 @@ body {
   color: var(--clr-text);
   background: var(--clr-bg);
 
-  font-family: "Source Code Pro", monospace;
+  font-family: "Poppins", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -53,7 +53,7 @@ body {
 }
 
 .page {
-  --_max-width: 60rem;
+  --_max-width: 74ch;
   --_inline-padding: 1.5rem;
 
   display: grid;
@@ -63,7 +63,7 @@ body {
   margin-inline: auto;
   margin-block: auto;
 
-  padding-block: 3rem 8rem;
+  padding-block: 3rem 4rem;
   padding-inline: var(--_inline-padding);
 
   width: min(var(--_max-width) + 2 * var(--_inline-padding), 100%);
@@ -72,7 +72,7 @@ body {
 main {
   display: grid;
   grid-auto-rows: min-content;
-  gap: 1.25lh;
+  gap: 1lh;
 }
 
 p {
@@ -96,6 +96,7 @@ h4,
 h5,
 h6 {
   font: inherit;
+  font-family: "Young Serif", serif;
   line-height: 1.1;
 }
 
@@ -115,7 +116,8 @@ button {
 
 hr {
   border: none;
-  border-block-start: 3px solid var(--clr-primary-dark);
+  border-block-start: 4px solid var(--clr-primary-dark);
+  border-radius: 999rem;
   margin-block: 0.75lh 0;
 }
 body.dark hr {
