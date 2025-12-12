@@ -201,13 +201,36 @@ body.dark {
   align-items: start;
 
   & .index-header-icons {
-    display: flex;
-    align-items: center;
-    gap: 1.625ch;
+    display: grid;
+    /* grid-template-columns: repeat(2, 1fr); */
+    gap: 1ch;
   }
   & .icon-link {
     width: 2.75ch;
     height: 2.75ch;
+  }
+}
+
+.index-header-top .title span {
+  position: relative;
+  cursor: default;
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 0.25ch;
+    background-image: url("/zig.svg");
+    position: absolute;
+    top: calc(100% - 0.825rem);
+    left: 0;
+    z-index: -1;
+
+    opacity: 0;
+    transition: opacity 50ms;
+  }
+
+  &.error::after {
+    opacity: 1;
   }
 }
 
