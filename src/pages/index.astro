@@ -1,32 +1,119 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "./components/Header.astro";
-import Projects from "./components/Projects.astro";
-import About from "./components/About.astro";
-import Research from "./components/Research.astro";
-import Contact from "./components/Contact.astro";
-import Navigation from "./components/Navigation.astro";
+
+import GitHubIcon from "../assets/icons/GitHubIcon.astro";
+import LinkedInIcon from "../assets/icons/LinkedInIcon.astro";
+import WainroutesIcon from "../assets/icons/WainroutesIcon.astro";
 ---
 
-<Layout
-	type="variable"
-	title="home"
-	maxWidth="74ch"
->
-	<Header />
-	<Navigation />
-	<Projects />
-	<About />
-	<Research />
-	<Contact />
+<Layout>
 
-	<!-- <p>Find out <a class="block-link" href="/about">about me</a> or read more about my <a class="block-link" href="/research">research</a> and <a class="block-link" href="/web">web development</a> work.</p> -->
-	<!-- <Footer /> -->
+<section class="page-section index-header" id="hero">
+	<div class="index-header-top">
+		<div>
+			<h1 class="title">
+				Joe <span id="test-text">Cupit</span>
+			</h1>
+			<p>PhD Researcher & Web Developer</p>
+		</div>
+	</div>
 
-	<!-- <div class="index-footer">
-		<a href="/about">About me</a>
-		<a href="/web">Web projects</a>
-		<a href="/research">My research</a>
-		<a href="/about">More</a>
-	</div> -->
+	<p>I'm a machine learning PhD student at the University of Manchester working on scheduling and OEE in chemical and process industries.</p>
+	<p>Outside of research, I love exploring the Lake District and  have created <a class="normal-link" href="https://wainroutes.co.uk/" target="_blank">Wainroutes</a>, a guide to the Lake District's 214 Wainwrights.</p>
+
+	<div class="index-header-icons">
+		<GitHubIcon />
+		<LinkedInIcon />
+		<WainroutesIcon />
+	</div>
+
+	<script>
+		const scrollButton = document.getElementById("read-more-button");
+
+		const checkScroll = () => {
+		if (window.scrollY > 100) {
+			scrollButton?.classList.add("hide");
+		}
+		else {
+			scrollButton?.classList.remove("hide");
+		}
+		}
+
+		window.addEventListener("scroll", checkScroll);
+		checkScroll()
+	</script>
+
+	<script>
+		const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+		const text = document.getElementById("test-text");
+		let isAnimating = false
+
+		const textAnimation = (target: HTMLElement, normal: string, alternate: string) => {
+			if (!target) return;
+
+			let time = 0;
+			const step = (fn: CallableFunction, delay: number) => {
+				time += delay;
+				setTimeout(fn, time);
+			}
+
+			const jitter = (base: number, around: number = 10) => {
+				const offset = Math.floor(Math.random() * (around * 2 + 1)) - around;
+				return base + offset;
+			};
+
+			const typeText = (str: string, speed: number) => {
+				for (let i=1; i<= str.length; i++) {
+					step(() => target.innerText = str.slice(0, i), jitter(speed, 10));
+				}
+			}
+
+			const deleteText = (str: string, speed: number) => {
+				for (let i=str.length; i>=0; i--) {
+					step(() => target.innerText = str.slice(0, i), jitter(speed, 10));
+				}
+			}
+
+			// delete original
+			deleteText(normal, 120);
+			step(() => {}, 250);
+
+			// type new
+			typeText(alternate, 160);
+			step(() => target.classList.add("error"), -150);
+			
+			// pause
+			step(() => {}, 1500);
+
+			// delete new
+			deleteText(alternate, 130);
+			step(() => target.classList.remove("error"), 250);
+
+			// type original
+			typeText(normal, 120);
+
+			step(() => isAnimating = false, 500);
+		}
+
+		let animatingId: NodeJS.Timeout | null = null;
+		const doAnimation = () => {
+			if (!isAnimating && !prefersReducedMotion && text) {
+				if (animatingId) {
+				clearTimeout(animatingId);
+				}
+
+				isAnimating = true;
+				textAnimation(text, "Cupit", "/kju-pɪt/")  // /kju-pɪt/
+
+				animatingId = setTimeout(() => {
+				doAnimation();
+				}, 30000);
+			}
+		}
+
+		animatingId = setTimeout(doAnimation, 1000);
+		document.getElementById("test-text")?.addEventListener("mouseover", doAnimation)
+	</script>
+</section>
+
 </Layout>

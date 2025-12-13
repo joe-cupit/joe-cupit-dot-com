@@ -16,7 +16,7 @@
   :root {
     --fs-body: 0.875rem;
     --fs-medium: 1.25rem;
-    --fs-big: 1.75rem;
+    --fs-big: 1.7rem;
     --fs-title: 2.5rem;
   }
 }
@@ -33,12 +33,11 @@ body.dark {
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  /* justify-items: center;
-  align-content: center; */
+  display: grid;
+  align-content: center;
+  justify-items: center;
 
-  min-height: 100lvh;
+  min-height: 100svh;
 
   color: var(--clr-text);
   background: var(--clr-bg);
@@ -55,23 +54,13 @@ body {
 main {
   display: grid;
   gap: 5rem;
-}
-
-.page {
-  --_max-width: 74ch;
-  --_inline-padding: 1.5rem;
-
-  margin-inline: auto;
-  margin-block: auto;
-
-  padding-block: 3rem 4rem;
-  padding-inline: var(--_inline-padding);
-
-  width: min(var(--_max-width) + 2 * var(--_inline-padding), 100%);
+  align-content: center;
+  justify-items: center;
 }
 
 p {
-  max-width: 74ch;
+  max-width: 68ch;
+  text-wrap: pretty;
 }
 
 img {
