@@ -1,6 +1,11 @@
 ---
 import "../styles/global.css";
 import "../styles/components.css";
+
+const url = "https://joecupit.com"
+const title = "Joe Cupit";
+const description = "My website";
+const image = url + "/assets/joe-cupit-dot-com.png";
 ---
 
 <html lang="en">
@@ -10,10 +15,21 @@ import "../styles/components.css";
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 
-		<title>Joe Cupit</title>
-		<meta name="description" content="The website for Joe Cupit" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
 
-		<link rel="canonical" href="https://joecupit.com" />
+		<link rel="canonical" href={url} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={url} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={image} />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={image} />
 	</head>
 	<body>
 		<main>
