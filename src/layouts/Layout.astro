@@ -2,10 +2,16 @@
 import "../styles/global.css";
 import "../styles/components.css";
 
-const url = "https://joecupit.com"
-const title = "Joe Cupit";
-const description = "My website";
-const image = url + "/assets/joe-cupit-dot-com.png";
+const siteUrl = "https://joecupit.com"
+const siteTitle = "Joe Cupit";
+const siteDescription = "My website";
+const image = siteUrl + "/assets/joe-cupit-dot-com.png";
+
+const { title, description } = Astro.props;
+
+const pageURL = new URL(Astro.url.pathname, Astro.site);
+const pageTitle = title ? `${title} by ${siteTitle}` : siteTitle;
+const pageDesc = description ?? siteDescription;
 ---
 
 <html lang="en">
@@ -15,20 +21,20 @@ const image = url + "/assets/joe-cupit-dot-com.png";
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 
-		<title>{title}</title>
-		<meta name="description" content={description} />
+		<title>{pageTitle}</title>
+		<meta name="description" content={pageDesc} />
 
-		<link rel="canonical" href={url} />
+		<link rel="canonical" href={pageURL} />
 
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content={url} />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
+		<meta property="og:url" content={pageURL} />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={pageDesc} />
 		<meta property="og:image" content={image} />
 
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={title} />
-		<meta name="twitter:description" content={description} />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={pageDesc} />
 		<meta name="twitter:image" content={image} />
 	</head>
 	<body>
